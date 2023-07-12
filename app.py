@@ -16,8 +16,10 @@ class NN(nn.Module):
             nn.ReLU(),
             nn.Conv2d(48, 64, (3, 3)),
             nn.ReLU(),
+            nn.Conv2d(64, 64, (3, 3)),
+            nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(64 * (28 - 6) * (28 - 6), 10)
+            nn.Linear(64 * (28 - 8) * (28 - 8), 10)
         )
     
     def forward(self, x):
