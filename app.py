@@ -22,3 +22,18 @@ class NN(nn.Module):
     
     def forward(self, x):
         return self.model(x)
+
+def main():
+    st.title("MNIST Digit Predictor")
+    l_col, r_col = st.columns(2)
+
+    with l_col:
+        st.header("Draw a digit from 1-9")
+
+    with r_col: 
+        st.header("Predicted:")
+        # change below
+        st.title("Something...")
+
+if __name__ == "__main__":
+    main()
