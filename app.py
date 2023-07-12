@@ -19,3 +19,6 @@ class NN(nn.Module):
             nn.Flatten(),
             nn.Linear(64 * (28 - 6) * (28 - 6), 10)
         )
+    
+    def forward(self, x):
+        return self.model(x)
