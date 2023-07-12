@@ -29,6 +29,17 @@ def main():
 
     with l_col:
         st.header("Draw a digit from 1-9")
+        img = st_canvas(
+            fill_color="rgb(0, 0, 0)",
+            stroke_width = 10,
+            stroke_color="#FFFFFF",
+            background_color="#000000",
+            update_streamlit=True,
+            width=224,
+            height=224,
+            drawing_mode="freedraw",
+            key="canvas",
+        )
 
     with r_col: 
         st.header("Predicted:")
