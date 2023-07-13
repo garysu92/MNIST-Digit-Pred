@@ -1,3 +1,4 @@
+import torch
 from torch import nn
 from torch.optim import Adam
 from torch.utils.data import DataLoader
@@ -39,6 +40,12 @@ def main():
 
             yhat = model(x)
             loss = CEL(yhat, y)
+
+            opt.zero_grad()
+            loss.backward()
+            opt.step()
+
+    torch.save(model.state_dict, "cnn")
 
 
 if __name__ == "__main__":
