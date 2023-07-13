@@ -1,12 +1,12 @@
 import torch
-from torch import nn
+from torch import nn, save
 from torch.optim import Adam
 from torch.utils.data import DataLoader
 from torchvision import datasets
 from torchvision.transforms import ToTensor
 
 train_data = datasets.MNIST(root = "data", download = True, train = True, transform = ToTensor())
-train_data_set = DataLoader(train_data, 16)
+train_data_set = DataLoader(train_data, 32)
 
 class NN(nn.Module):
     def __init__(self):
@@ -14,14 +14,12 @@ class NN(nn.Module):
         self.model = nn.Sequential(
             nn.Conv2d(1, 32, (3, 3)),
             nn.ReLU(),
-            nn.Conv2d(32, 48, (3, 3)),
-            nn.ReLU(),
-            nn.Conv2d(48, 64, (3, 3)),
+            nn.Conv2d(32, 64, (3, 3)),
             nn.ReLU(),
             nn.Conv2d(64, 64, (3, 3)),
             nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(64 * (28 - 8) * (28 - 8), 10)
+            nn.Linear(64 * (28 - 6) * (28 - 6), 10)
         )
     
     def forward(self, x):
@@ -44,6 +42,8 @@ def main():
             opt.zero_grad()
             loss.backward()
             opt.step()
+
+        print(f"Epoch:{epochs} loss is {loss.item()}")
 
     torch.save(model.state_dict, "cnn")
 
