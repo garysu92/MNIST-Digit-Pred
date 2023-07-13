@@ -25,3 +25,21 @@ class NN(nn.Module):
     
     def forward(self, x):
         return self.model(x)
+
+model = NN().to('cpu')
+opt = Adam(model.parameters(), lr = 0.01)
+CEL = nn.CrossEntropyLoss()
+
+def main():
+    for epochs in range(10):
+        for batch in train_data_set:
+            x, y = batch
+            x = x.to('cpu')
+            y = y.to('cpu')
+
+            yhat = model(x)
+            loss = CEL(yhat, y)
+
+
+if __name__ == "__main__":
+    main()
