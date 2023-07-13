@@ -26,7 +26,7 @@ class NN(nn.Module):
         return self.model(x)
 
 model = NN().to('mps')
-opt = Adam(model.parameters(), lr = 0.01)
+opt = Adam(model.parameters(), lr = 0.001)
 CEL = nn.CrossEntropyLoss()
 
 def main():
@@ -45,7 +45,7 @@ def main():
 
         print(f"Epoch:{epochs} loss is {loss.item()}")
 
-    torch.save(model.state_dict, "cnn.pt")
+    torch.save(model.state_dict(), "cnn.pt")
 
 
 if __name__ == "__main__":
