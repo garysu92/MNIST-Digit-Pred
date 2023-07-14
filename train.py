@@ -18,8 +18,10 @@ class NN(nn.Module):
             nn.ReLU(),
             nn.Conv2d(64, 64, (3, 3)),
             nn.ReLU(),
+            nn.Conv2d(64, 64, (3, 3)),
+            nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(64 * (28 - 6) * (28 - 6), 10)
+            nn.Linear(64 * (28 - 8) * (28 - 8), 10)
         )
     
     def forward(self, x):
@@ -30,7 +32,7 @@ opt = Adam(model.parameters(), lr = 0.001)
 CEL = nn.CrossEntropyLoss()
 
 def main():
-    for epochs in range(10):
+    for epochs in range(5):
         for batch in train_data_set:
             x, y = batch
             x = x.to('mps')
@@ -45,7 +47,7 @@ def main():
 
         print(f"Epoch:{epochs} loss is {loss.item()}")
 
-    torch.save(model.state_dict(), "cnn.pt")
+    torch.save(model.state_dict(), "cnn2.pt")
 
 
 if __name__ == "__main__":
