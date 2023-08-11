@@ -32,7 +32,7 @@ def main():
     st.title("MNIST Digit Predictor")
     l_col, r_col = st.columns(2)
     model = NN()
-    model.load_state_dict(torch.load("./cnn2.pt"))
+    model.load_state_dict(torch.load("./cnn3.pt"))
 
 
     with l_col:

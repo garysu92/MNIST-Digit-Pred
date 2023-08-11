@@ -47,7 +47,7 @@ def main():
 
         print(f"Epoch:{epochs} loss is {loss.item()}")
 
-    torch.save(model.state_dict(), "cnn2.pt")
+    torch.save(model.state_dict(), "cnn3.pt")
 
 
 if __name__ == "__main__":
