@@ -48,7 +48,7 @@ def main():
             drawing_mode = "freedraw",
             key = "canvas",
         )
-
+    prediction = None
     if (img.image_data is not None):
         gray_img = RGBtoGray(img.image_data)
         gray_img = zoom(gray_img, 0.1) # 280*0.1 = 28
