@@ -48,7 +48,7 @@ def main():
             drawing_mode = "freedraw",
             key = "canvas",
         )
-    prediction = None
+
     if (img.image_data is not None):
         gray_img = RGBtoGray(img.image_data)
         gray_img = zoom(gray_img, 0.1) # 280*0.1 = 28
@@ -64,7 +64,7 @@ def main():
     with r_col: 
         st.header("Predicted:")
         # change below
-        st.title(prediction[0])
+        if prediction is not None: st.title(prediction[0])
 
 if __name__ == "__main__":
     main()
